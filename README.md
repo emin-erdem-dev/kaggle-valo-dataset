@@ -1,8 +1,18 @@
+<div align="center">
 
 VALORANT VCT 2024: DATA SCIENCE & MVP PREDICTOR
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Data-Pandas%20%7C%20NumPy-150458.svg?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Scikit-Learn](https://img.shields.io/badge/AI-Scikit--Learn-F7931E.svg?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Kaggle](https://img.shields.io/badge/Live-Kaggle%20Notebook-20BEFF.svg?logo=kaggle&logoColor=white)](https://www.kaggle.com/code/muhammederdem69/valorant-pro-match)
+
 "İyi bir aim seni en fazla platine çıkarır, ama veriyi iyi okuyan bir analitik model takımını şampiyon yapar."
 
-Bu proje, e-spor arenasını sadece izlemekle kalmayıp, arka planda dönen matematiği ve veriyi anlamak için geliştirildi. Rekabetçi oyunların dinamiklerini Veri Bilimi (Data Science) süzgecinden geçiriyoruz. Valorant Champions Tour (VCT) 2024 verilerini kullanarak; sadece skor tablosuna bakmak yerine istatistikleri okuyup MVP (En Değerli Oyuncu) potansiyelini tahmin eden bir makine öğrenmesi sistemi kurduk.
+</div>
+
+---
+
+Bu proje, e-spor dünyasını sadece bir oyun olarak değil, devasa bir veri havuzu olarak ele alıyor. Rekabetçi oyunların dinamiklerini Veri Bilimi (Data Science) süzgecinden geçirerek, profesyonel oyuncuların istatistiklerini analiz ettik. Amacımız; ham verileri işleyerek MVP (En Değerli Oyuncu) potansiyelini tahmin eden bir makine öğrenmesi sistemi kurmaktır.
 
 ---
 
@@ -14,38 +24,37 @@ Kaggle: Valorant Pro Match Analysis & ML Model
 ---
 
 KULLANILAN TEKNOLOJİLER (TECH STACK)
-Bu analiz sürecinde standart bir kopyala-yapıştır mantığıyla ilerlemedik. Veri mimarisini ve tahminleme modelini şu araçlarla sıfırdan inşa ettik:
+Bu projede kopyala-yapıştır mantığıyla değil, sektör standartlarında Veri Bilimi araçlarıyla ilerledik:
 
-| Kategori | Teknoloji / Kütüphane | Projedeki Görevi |
+| Kategori | Araçlar | Projedeki Görevi |
 | :--- | :--- | :--- |
-| Geliştirme Dili | Python 3.12 | Sistemin ana omurgası ve mantık katmanı |
-| Veri Manipülasyonu | Pandas, NumPy | İnatçı e-spor verilerini temizleme ve matematiksel matris işlemleri |
-| Görselleştirme | Seaborn, Matplotlib | Veriyi anlamlı grafiklere dökme (Bar Chart, Scatter Plot) |
-| Makine Öğrenmesi | Scikit-Learn | Random Forest Classifier ile performans sınıflandırma tahmini |
-| Çalışma Ortamı | Kaggle Notebook | Bulut tabanlı derleme, test ve sunum |
+| Geliştirme Dili | Python 3.12 | Sistemin ana omurgası ve algoritma yönetimi. |
+| Veri Manipülasyonu | Pandas & NumPy | İnatçı e-spor verilerini temizleme ve matematiksel işlemler. |
+| Görselleştirme | Seaborn & Matplotlib | Veriyi göze hitap eden profesyonel grafiklere dökme. |
+| Yapay Zeka | Scikit-Learn | Random Forest Classifier ile oyuncu performans sınıflandırması. |
+| Ortam | Kaggle Notebook | Bulut tabanlı derleme, test ve global sunum. |
 
 ---
 
 GELİŞTİRME AŞAMALARI (OYUN PLANI)
-Veri Temizliği (Lag'ı Ortadan Kaldırmak)
-E-spor verileri Kaggle'dan veya API'lerden her zaman tertemiz gelmiyor. Sayı olması gereken yerlerde yüzdelik dilimler, virgüller veya boş bırakılmış (NaN) hücreler bulunuyordu. Verilerdeki bu tip uyuşmazlıkları özel fonksiyonlarla ayıkladık ve tüm istatistikleri (ACS, KDR, KAST vb.) float (sayısal) formatlara zorlayarak algoritmanın anlayacağı, hatasız bir yapıya getirdik.
+Veri Temizliği (Lag'ı Bitirme Seansı)
+E-spor verileri Kaggle'dan her zaman oyuna hazır gelmez. Sayı olması gereken yerlerde yüzdelik dilimler, virgüller veya boş bırakılmış (NaN) hücreler vardı. Bu kirli verileri özel Python fonksiyonlarıyla ayıkladık. Tüm istatistikleri (ACS, KDR, KAST vb.) sayısal formatlara zorlayarak algoritmanın hata yapmasını engelledik.
 
 Keşifsel Veri Analizi (Insight Avı)
-Veriyi sadece alt alta listelemedik, "Bu rakamlar bize maç hakkında ne söylüyor?" sorusuna odaklandık. 
-Bir oyuncunun skor katkısının sadece adam öldürmek (Kill) olmadığını; hayatta kalma (Survive), asist yapma (Assist) ve takas (Trade) gibi KAST oranlarının takım başarısına ve ACS (Average Combat Score) puanına doğrudan etkilerini inceledik.
-Turnuvanın istatistiksel olarak en iyi oyuncularını, ortalama ACS puanlarına göre gruplayarak detaylı bir skor tablosu ile görselleştirdik.
+Sadece rakamlara bakmadık, "Bu rakam bize maç hakkında ne anlatıyor?" dedik. 
+Bir oyuncunun skor katkısının sadece adam öldürmek (Kill) olmadığını gördük.
+Hayatta kalma (Survive) ve asist (Assist) gibi oranların (KAST) toplam skora (ACS) olan etkisini detaylı bar ve scatter grafiklerle kanıtladık.
 
 Model Eğitimi (AI ile MVP Tahmini)
-Sadece geçmişi analiz etmekle kalmayıp geleceği de tahmin etmek istedik. Hedef değişken (Target Variable) olarak belirli bir performans barajı belirledik ve bu barajın üstünde kalan oyuncuları "Elit" olarak sınıflandırdık. Random Forest algoritmasını kullanarak; oyuncuların KDR, ADR ve HS oranlarına bakıp, o oyuncunun "takım taşıyıcısı" olup olmadığını tahmin eden bir model eğittik.
+Projenin en can alıcı noktası burasıydı. Belirli bir ACS barajı belirledik ve bu barajın üstünde kalan oyuncuları "Elit" olarak sınıflandırdık. Random Forest algoritmasını kullanarak; oyuncuların KDR, ADR ve HS oranlarına bakıp, o oyuncunun "takım taşıyıcısı" olup olmadığını tahmin eden bir makine öğrenmesi modeli eğittik.
 
 ---
 
-SONUÇ VE VİZYON
-Bu proje; makine öğrenmesinin ve veri analizinin sadece finans veya sağlık gibi geleneksel sektörlerde değil, e-spor ve oyun ekosisteminde de ne kadar kritik bir güç olduğunu kanıtlamak için hazırlandı. Bilgisayar Programcılığı perspektifiyle, verinin ham ve kirli halinden, tahmin üreten bir yapay zeka modeline kadar tüm yaşam döngüsü başarıyla tamamlanmıştır.
+SON SÖZ VE VİZYON
+Bu çalışma, Bilgisayar Programcılığı eğitiminde edindiğimiz analitik düşünme yapısının e-spor dünyasındaki reel bir uygulamasıdır. Verinin ham halinden, anlamlı bir tahmin üreten yapay zeka modeline kadar tüm yaşam döngüsü başarıyla tamamlanmıştır.
 
 <br>
 
 Geliştirici: Muhammed Emin Erdem
-Geliştirici Mahlası: M.Emin Erdem
 Eğitim: İnönü Üniversitesi - Bilgisayar Programcılığı
-Platform: (https://github.com/muhammederdem69)
+Platform: GitHub Profili
